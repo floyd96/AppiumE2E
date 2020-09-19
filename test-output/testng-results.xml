@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="71692" started-at="2020-09-19T15:17:50 IST" finished-at="2020-09-19T15:19:01 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="71692" started-at="2020-09-19T15:17:50 IST" finished-at="2020-09-19T15:19:01 IST">
+      <class name="Appium.Assignment.SignIn">
+        <test-method status="PASS" signature="killAllNodes()[pri:0, instance:Appium.Assignment.SignIn@c81cdd1]" name="killAllNodes" is-config="true" duration-ms="3028" started-at="2020-09-19T15:17:47 IST" finished-at="2020-09-19T15:17:50 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- killAllNodes -->
+        <test-method status="PASS" signature="DriverInitializer()[pri:0, instance:Appium.Assignment.SignIn@c81cdd1]" name="DriverInitializer" is-config="true" duration-ms="31075" started-at="2020-09-19T15:17:50 IST" finished-at="2020-09-19T15:18:21 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DriverInitializer -->
+        <test-method status="PASS" signature="SignInTest(java.lang.String, java.lang.String)[pri:0, instance:Appium.Assignment.SignIn@c81cdd1]" name="SignInTest" duration-ms="37871" started-at="2020-09-19T15:18:23 IST" data-provider="getExcelData" finished-at="2020-09-19T15:19:01 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[demoID]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[demoPW]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SignInTest -->
+        <test-method status="PASS" signature="killService()[pri:0, instance:Appium.Assignment.SignIn@c81cdd1]" name="killService" is-config="true" duration-ms="104" started-at="2020-09-19T15:19:01 IST" finished-at="2020-09-19T15:19:01 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- killService -->
+      </class> <!-- Appium.Assignment.SignIn -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
