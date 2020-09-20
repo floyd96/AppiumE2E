@@ -9,7 +9,6 @@
     <classes>
       <class name="Appium.Assignment.AddProductToCart">
         <methods>
-          <include name="SearchProductTest"/>
           <include name="SelectRandomProductTest"/>
           <include name="killService"/>
           <include name="ValidateProductDetailsTest"/>
