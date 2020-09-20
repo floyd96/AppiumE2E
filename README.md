@@ -1,4 +1,4 @@
-## Amazon Assignment : 
+## Amazon Appium Assignment : 
 
 This project has been developed to automate Amazon application testing on Android platform using Java, Appium, TestNG and Maven.
 
