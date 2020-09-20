@@ -14,7 +14,6 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import Resources.TestUtilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -39,7 +38,7 @@ public class AddProductToCart extends BaseDriver {
 	
 	//Initializing driver with capabilities and starting the server
 	@BeforeClass
-	public void DriverInitializer() throws IOException {
+	public void driverInitializer() throws IOException {
 		startServer();
 		driver=capabilityDriver();
 		wait = new WebDriverWait(driver,10);
@@ -52,10 +51,7 @@ public class AddProductToCart extends BaseDriver {
 	
 	//Searches a for a product with name defined in Global.properties file
 	@Test
-	public  void SearchProductTest() throws IOException, InterruptedException{
-		
-		Reporter.log("Inside SearchProductTest");
-		
+	public  void searchProductTest() throws IOException, InterruptedException{
 		
 		FileInputStream fileInputStream = null;
 		fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\Global.properties");
@@ -79,7 +75,7 @@ public class AddProductToCart extends BaseDriver {
 	
 	// Selects a random product from the list of search result
 	@Test
-	public  void SelectRandomProductTest() throws InterruptedException{
+	public  void selectRandomProductTest() throws InterruptedException{
 		
 	    try {
 			SearchResultPage searchResultPage=new SearchResultPage(driver);
@@ -106,8 +102,8 @@ public class AddProductToCart extends BaseDriver {
 }   
 	
 	//Adds the selected product to cart
-	@Test(dependsOnMethods = {"SelectRandomProductTest"})
-	public void AddProductToCartTest() throws InterruptedException {
+	@Test(dependsOnMethods = {"selectRandomProductTest"})
+	public void addProductToCartTest() throws InterruptedException {
 		
 		ProductPage productPage=new ProductPage(driver);
 		TestUtilities testUtils=new TestUtilities();
@@ -127,7 +123,7 @@ public class AddProductToCart extends BaseDriver {
 			
 			addToCartBtn = productPage.getAddToCartBtn(); 
 	    
-	        Reporter.log("This test may fail because Add to cart button not getting clicked");
+	                Reporter.log("This test may fail because Add to cart button not getting clicked");
 			TouchActions action = new TouchActions(driver);
 			action.singleTap(addToCartBtn);
 			action.perform();                   //ADD TO CART BUTTON NOT GETTING CLICKED WITH CORRECT LOCATOR,TRYING SINGLE TAP INSTEAD
@@ -142,8 +138,8 @@ public class AddProductToCart extends BaseDriver {
 	
 	
 	//Validating the details as fetched from Cart
-	@Test(dependsOnMethods = {"AddProductToCartTest"})
-	public void ValidateProductDetailsTest() {
+	@Test(dependsOnMethods = {"addProductToCartTest"})
+	public void validateProductDetailsTest() {
 		
 		CartPage cartPage=new CartPage(driver);
 		
