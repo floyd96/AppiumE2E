@@ -17,7 +17,7 @@ mvn clean install
 ```
 6. On completion of execution, test report will be generated in [Amazon.html file](https://github.com/floyd96/AmazonAssignment/tree/master/Reports/htmlreport.html)
 
-![image](https://github.com/floyd96/AmazonAssignment/tree/master/Screenshots)
+
 
 
 ## App Design
@@ -33,15 +33,15 @@ mvn clean install
 
 ## Scenarios covered
 
-1.SignInTest- Logging in to the app with a set of credentials.
+1.signInTest- Logging in to the app with a set of credentials.
 
-2.SearchProductTest- Searching for "65 inch TV" from the homepage.
+2.searchProductTest- Searching for "65 inch TV" from the homepage.
 
-3.SelectRandomProductTest- Selecting a random product from the search result and grab the details of the product
+3.selectRandomProductTest- Selecting a random product from the search result and grab the details of the product
 
-4.AddProductToCartTest- Adding the randomly selected product to cart and move to cart view.
+4.addProductToCartTest- Adding the randomly selected product to cart and move to cart view.
 
-5.ValidateProductDetailsTest- Validate the details of the selected product from cart.
+5.validateProductDetailsTest- Validate the details of the selected product from cart.
 
-6.SignOutTest- Signing Out from the app.
+6.signOutTest- Signing Out from the app.
 
