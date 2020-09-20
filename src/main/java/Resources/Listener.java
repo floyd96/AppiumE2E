@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.Reporter;
+
 
 
 
@@ -14,12 +16,14 @@ public class Listener implements ITestListener {
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
+		Reporter.log(result.getName()+" has started");
 		
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
+		Reporter.log(result.getName()+" has PASSED");
 		
 		
 	}
@@ -27,7 +31,11 @@ public class Listener implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 		// TODO Auto-generated method stub
-		//screenshot 
+		
+		
+		Reporter.log(result.getName()+" has FAILED");
+		
+		//screenshot
 		String s=result.getName();
 		try {
 		
@@ -43,6 +51,7 @@ public class Listener implements ITestListener {
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		// TODO Auto-generated method stub
+		Reporter.log(result.getName()+" has been SKIPPED");
 		
 	}
 

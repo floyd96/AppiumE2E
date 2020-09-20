@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -20,7 +21,7 @@ public class SignOut extends BaseDriver {
 	private static WebDriverWait wait;
 	
 	
-	//Iinitializes driver aand starts server
+	//Initializes driver and starts server
 	@BeforeClass
 	public void DriverInitializer() throws IOException {
 		startServer();
@@ -53,6 +54,7 @@ public class SignOut extends BaseDriver {
 			}
 			
 		}catch(Exception e) {
+			Assert.fail();
 			e.printStackTrace();
 		}
 	

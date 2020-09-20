@@ -10,6 +10,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -66,9 +67,7 @@ public class SignIn extends BaseDriver {
 	public void SignInTest(String username,String password) throws IOException, InterruptedException {
 		
 		
-		  System.out.println("test is starting");
-		
-		  SignInPage signInPage =new SignInPage(driver);
+		        SignInPage signInPage =new SignInPage(driver);
 		//sending driver in the pageObject class
 		  
 		  try {
@@ -87,7 +86,9 @@ public class SignIn extends BaseDriver {
 			  }
 		  
 		  catch(Exception e) {
-			e.printStackTrace();
+			  
+			 Assert.fail();
+			 
 		}
 		
 				Thread.sleep(2000);

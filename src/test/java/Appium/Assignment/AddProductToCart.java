@@ -71,12 +71,9 @@ public class AddProductToCart extends BaseDriver {
 	    Thread.sleep(5000);
 		//Entering productName in search box
 		driver.getKeyboard().sendKeys(productName);
-		driver.getKeyboard().sendKeys(Keys.ENTER); try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		driver.getKeyboard().sendKeys(Keys.ENTER);
+	    Thread.sleep(3000);
+		
 
 	}
 	
@@ -84,16 +81,22 @@ public class AddProductToCart extends BaseDriver {
 	@Test
 	public  void SelectRandomProductTest() throws InterruptedException{
 		
-	    SearchResultPage searchResultPage=new SearchResultPage(driver);
-	    TestUtilities testUtilities=new TestUtilities();
-		List<AndroidElement> productList=searchResultPage.getProductList();
-		AndroidElement productToBeClicked=testUtilities.getRandomElement(productList);//Getting a random product
-		productName=searchResultPage.fetchProductName(productToBeClicked);
-		productPrice=searchResultPage.fetchProductPrice(productToBeClicked);//Grabbing product price and name
-		Reporter.log("product name is "+ productName);
-		Reporter.log("product price is "+ productPrice);
-		productToBeClicked.click();
-		Reporter.log("Clicked on a random product");
+	    try {
+			SearchResultPage searchResultPage=new SearchResultPage(driver);
+			TestUtilities testUtilities=new TestUtilities();
+			List<AndroidElement> productList=searchResultPage.getProductList();
+			AndroidElement productToBeClicked=testUtilities.getRandomElement(productList);//Getting a random product
+			productName=searchResultPage.fetchProductName(productToBeClicked);
+			productPrice=searchResultPage.fetchProductPrice(productToBeClicked);//Grabbing product price and name
+			Reporter.log("product name is "+ productName);
+			Reporter.log("product price is "+ productPrice);
+			productToBeClicked.click();
+			Reporter.log("Clicked on a random product");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail();
+			e.printStackTrace();
+		}
 		Thread.sleep(3000);
 	
 		
@@ -110,22 +113,27 @@ public class AddProductToCart extends BaseDriver {
 		TestUtilities testUtils=new TestUtilities();
 		
 		
-		testUtils.scrollToText(driver,"Add to Cart");//Scrolls down to add to cart button
-		wait.until(ExpectedConditions.visibilityOf(productPage.getAddToCartBtn()));
-		
-	    AndroidElement addToCartBtn=productPage.getAddToCartBtn();
-	    
-	    Reporter.log("This test may fail because Add to cart button not getting clicked");
+		AndroidElement addToCartBtn;
 		try {
+			testUtils.scrollToText(driver,"Add to Cart");//Scrolls down to add to cart button
+			wait.until(ExpectedConditions.visibilityOf(productPage.getAddToCartBtn()));
+		}
+		
+		catch (Exception e1) {
+			// TODO Auto-generated catch block
+			Assert.fail();
+			e1.printStackTrace();
+		}
+			
+			addToCartBtn = productPage.getAddToCartBtn(); 
+	    
+	        Reporter.log("This test may fail because Add to cart button not getting clicked");
 			TouchActions action = new TouchActions(driver);
 			action.singleTap(addToCartBtn);
 			action.perform();                   //ADD TO CART BUTTON NOT GETTING CLICKED WITH CORRECT LOCATOR,TRYING SINGLE TAP INSTEAD
-		} catch (NoSuchElementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Reporter.log("Clicked on Add to Cart Button");
-		Thread.sleep(3000);
+
+		    Reporter.log("Clicked on Add to Cart Button");
+		    Thread.sleep(3000);
 		
 		
 		
@@ -143,9 +151,16 @@ public class AddProductToCart extends BaseDriver {
 			cartPage.getCartBtn().click();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			Assert.fail();
 			e.printStackTrace();
 		}
-		wait.until(ExpectedConditions.visibilityOf(cartPage.getCartList()));
+		try {
+			wait.until(ExpectedConditions.visibilityOf(cartPage.getCartList()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail();
+			e.printStackTrace();
+		}
 		Reporter.log("Grabbing details from cart to Assert");
 		String productNameFromKart=cartPage.getProductNameFromCart();
 		String productPriceFromKart=cartPage.getProductPriceFromCart();//Grab name and price of product from Cart

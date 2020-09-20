@@ -1,7 +1,6 @@
 package Resources;
 
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Map;
  
@@ -21,8 +20,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
  
 public class ExtentReporterNG implements IReporter {
-    private ExtentReports extent;
-    ExtentHtmlReporter htmlReporter;
+     private ExtentReports extent;
+     ExtentHtmlReporter htmlReporter;
  
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
     	
