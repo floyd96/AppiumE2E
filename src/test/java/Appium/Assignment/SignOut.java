@@ -1,6 +1,6 @@
 package Appium.Assignment;
-import java.io.IOException;
 
+import java.io.IOException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,7 +23,7 @@ public class SignOut extends BaseDriver {
 	
 	//Initializes driver and starts server
 	@BeforeClass
-	public void DriverInitializer() throws IOException {
+	public void driverInitializer() throws IOException {
 		startServer();
 		driver=capabilityDriver();
 		wait = new WebDriverWait(driver,10);
@@ -33,18 +33,19 @@ public class SignOut extends BaseDriver {
 	
     //Logs out of the App
 	@Test
-	public void SignOutTest() throws IOException {
+	public void signOutTest() throws IOException {
 		
 		
 		
 		SignOutPage signOutPage=new SignOutPage(driver);
 		TestUtilities testUtilities=new TestUtilities();
 		
-		signOutPage.getSideBar().click();
-		testUtilities.scrollToText(driver, "Settings");
-		wait.until(ExpectedConditions.visibilityOf(signOutPage.getSettings()));
-		signOutPage.getSettings().click();
-		try {
+		 try {
+		        signOutPage.getSideBar().click();
+		        testUtilities.scrollToText(driver, "Settings");
+		        wait.until(ExpectedConditions.visibilityOf(signOutPage.getSettings()));
+		        signOutPage.getSettings().click();
+		
 			if(signOutPage.getSignOutBtn().isDisplayed()) {
 				signOutPage.getSignOutBtn().click();
 				wait.until(ExpectedConditions.visibilityOf(signOutPage.getConfirmBtn()));
