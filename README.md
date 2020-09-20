@@ -1,6 +1,6 @@
 ## Appium E2E Assignment : 
 
-This project has been developed to automate Amazon application testing on Android platform using Java, Appium, TestNG and Maven.
+This project has been developed to automate Amazon application testing on Android platform using Java, Appium, TestNG and Maven.Test Data has been fetched externally from Excel Sheet using Apache POI. The driver configuration and Product Name can be changed/modified  from the Global.properties file.
 
 ## Steps to run the application:
 
