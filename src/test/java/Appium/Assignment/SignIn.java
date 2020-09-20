@@ -1,13 +1,8 @@
 package Appium.Assignment;
 
-
-
 import pageObjects.*;
-
 import java.io.IOException;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,7 +12,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import Resources.ReadExcel;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -54,7 +48,7 @@ public class SignIn extends BaseDriver {
 	
 	//Initializing the driver to perform the tests and stats the server
 	@BeforeClass
-	public void DriverInitializer() throws IOException {
+	public void driverInitializer() throws IOException {
 		startServer();
 		driver=capabilityDriver();
 		wait = new WebDriverWait(driver,20);
@@ -64,7 +58,7 @@ public class SignIn extends BaseDriver {
 	
 	//SignINTest logs into the App with given credentials
 	@Test(dataProvider="getExcelData")
-	public void SignInTest(String username,String password) throws IOException, InterruptedException {
+	public void signInTest(String username,String password) throws IOException, InterruptedException {
 		
 		
 		        SignInPage signInPage =new SignInPage(driver);
