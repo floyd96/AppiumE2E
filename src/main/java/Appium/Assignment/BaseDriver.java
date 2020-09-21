@@ -1,17 +1,15 @@
 package Appium.Assignment;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.URL;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import Resources.TestUtilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -23,7 +21,7 @@ public class BaseDriver  {
 	public static AndroidDriver<AndroidElement> elementAndroidDriver;
 	
 	
-	//Method to start appium server
+	//Method to start Appium server
 	
 	public static  AppiumDriverLocalService startServer() {
 		
@@ -60,23 +58,20 @@ public class BaseDriver  {
 	public static AndroidDriver<AndroidElement> capabilityDriver() throws IOException  {
 		// TODO Auto-generated method stub
 		
-		FileInputStream fileInputStream = null;
-		fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\Global.properties");
-		Properties properties=new Properties();
-		properties.load(fileInputStream);
 		
+		//Fetching desired capabilities from properties file
 		
-		String device=properties.getProperty("Device");
-		String appName=properties.getProperty("appName");
-		String automationName=properties.getProperty("automatioName");
-		String appPackage=properties.getProperty("appPackage");
-		String appActivity=properties.getProperty("appActivity");
+		String device=TestUtilities.getProperty("Device");
+		String appName=TestUtilities.getProperty("appName");
+		String automationName=TestUtilities.getProperty("automatioName");
+		String appPackage=TestUtilities.getProperty("appPackage");
+		String appActivity=TestUtilities.getProperty("appActivity");
 		File appDir = new File("src");
 	    File app = new File(appDir,appName);
 		
 	    
 	    
-	    
+	    //Setting desired capabilities
 	    DesiredCapabilities capabilities=new DesiredCapabilities();
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,120);
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,device);
@@ -88,6 +83,8 @@ public class BaseDriver  {
 		capabilities.setCapability("appActivity",appActivity);
 	    elementAndroidDriver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 		elementAndroidDriver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		
+		//returning AndroidDeriver with desired capabilities
 		return elementAndroidDriver;
 	}
 	
