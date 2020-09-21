@@ -37,21 +37,27 @@ public class SignOut extends BaseDriver {
 		
 		
 		
-		SignOutPage signOutPage=new SignOutPage(driver);
-		TestUtilities testUtilities=new TestUtilities();
+		       SignOutPage signOutPage=new SignOutPage(driver);
+		       TestUtilities testUtilities=new TestUtilities();
 		
 		 try {
+			//Clicking on burger icon
 		        signOutPage.getSideBar().click();
+			//Scrolling down to Settings option
 		        testUtilities.scrollToText(driver, "Settings");
 		        wait.until(ExpectedConditions.visibilityOf(signOutPage.getSettings()));
+			//Clicking on settings option
 		        signOutPage.getSettings().click();
 		
 			if(signOutPage.getSignOutBtn().isDisplayed()) {
+				//Clicking on Sign Out button if displayed
 				signOutPage.getSignOutBtn().click();
 				wait.until(ExpectedConditions.visibilityOf(signOutPage.getConfirmBtn()));
+				//Clicking on Confirm button
 				signOutPage.getConfirmBtn().click();
-			}else {
-				System.out.println("Already Signed Out");
+			}else { 
+				//Only reaches this block if already Signed out
+				Reporter.log("Already Signed Out");
 			}
 			
 		}catch(Exception e) {
