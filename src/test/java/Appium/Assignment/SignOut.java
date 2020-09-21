@@ -4,6 +4,7 @@ import java.io.IOException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -57,7 +58,7 @@ public class SignOut extends BaseDriver {
 				signOutPage.getConfirmBtn().click();
 			}else { 
 				//Only reaches this block if already Signed out
-				System.out.println("Already Signed Out");
+				Reporter.log("Already Signed Out");
 			}
 			
 		}catch(Exception e) {
