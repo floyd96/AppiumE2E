@@ -1,11 +1,9 @@
 package Appium.Assignment;
 
-import java.io.FileInputStream;
+
 import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,6 +22,7 @@ import pageObjects.SearchResultPage;
 
 public class AddProductToCart extends BaseDriver {
 	
+	//Storing as global variables to verify with cart details
 	private static String productName;
 	private static String productPrice;
 	
@@ -53,13 +52,8 @@ public class AddProductToCart extends BaseDriver {
 	@Test
 	public  void searchProductTest() throws IOException, InterruptedException{
 		
-		FileInputStream fileInputStream = null;
-		fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\Global.properties");
-		Properties properties=new Properties();
-		properties.load(fileInputStream);
-
 		//Fetching product name from properties file
-		String productName=properties.getProperty("productName");
+		String productName=TestUtilities.getProperty("productName");
 		HomePage homePage=new HomePage(driver);
 		
 		wait.until(ExpectedConditions.visibilityOf(homePage.getSearchField()));
@@ -70,7 +64,7 @@ public class AddProductToCart extends BaseDriver {
 		//Entering productName in search box
 		driver.getKeyboard().sendKeys(productName);
 		
-		//Hitting seaarch
+		//Hitting search
 		driver.getKeyboard().sendKeys(Keys.ENTER);
 	        Thread.sleep(3000);
 		
@@ -149,7 +143,7 @@ public class AddProductToCart extends BaseDriver {
 	
 	//Validating the details as fetched from Cart
 	@Test(dependsOnMethods = {"addProductToCartTest"})
-	public void validateProductDetailsTest() {
+	public void validateProductDetailsTest() throws InterruptedException {
 		
 		CartPage cartPage=new CartPage(driver);
 		       
@@ -161,14 +155,8 @@ public class AddProductToCart extends BaseDriver {
 			Assert.fail();
 			e.printStackTrace();
 		}
-		        //Waiting for the visibilist of cart list
-		try {
-			wait.until(ExpectedConditions.visibilityOf(cartPage.getCartList()));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Assert.fail();
-			e.printStackTrace();
-		}
+		        Thread.sleep(2000);
+		
 		        //Grabbing name and price of product from Cart list
 		        Reporter.log("Grabbing details from cart to Assert");
 		        String productNameFromKart=cartPage.getProductNameFromCart();
