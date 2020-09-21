@@ -65,15 +65,19 @@ public class SignIn extends BaseDriver {
 		//sending driver in the pageObject class
 		  
 		  try {
-			
+			        //Clicking on Sign In button
 				signInPage.getSignInBtn().click();
 				wait.until(ExpectedConditions.visibilityOf(signInPage.getEnterUserId()));
+			        //Entering User ID
 				signInPage.getEnterUserId().sendKeys(username);//userid entered
 				driver.hideKeyboard();
+			        //Clicking on continue button
 				signInPage.getContinueBtn().click();//continue
 				wait.until(ExpectedConditions.visibilityOf(signInPage.getEnterPassword()));
+			        //Entering password
 				signInPage.getEnterPassword().sendKeys(password);//enter password
 				driver.hideKeyboard();
+			        //Clicking on Log in button
 				signInPage.getLogInBtn().click();//Log in
 				Reporter.log("sign-in successfully");
 			
