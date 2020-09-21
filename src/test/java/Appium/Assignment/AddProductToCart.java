@@ -58,17 +58,21 @@ public class AddProductToCart extends BaseDriver {
 		Properties properties=new Properties();
 		properties.load(fileInputStream);
 
-		
+		//Fetching product name from properties file
 		String productName=properties.getProperty("productName");
 		HomePage homePage=new HomePage(driver);
 		
 		wait.until(ExpectedConditions.visibilityOf(homePage.getSearchField()));
-        homePage.getSearchField().click();
-	    Thread.sleep(5000);
+		
+		//Clicking on search field
+                homePage.getSearchField().click();
+	        Thread.sleep(5000);
 		//Entering productName in search box
 		driver.getKeyboard().sendKeys(productName);
+		
+		//Hitting seaarch
 		driver.getKeyboard().sendKeys(Keys.ENTER);
-	    Thread.sleep(3000);
+	        Thread.sleep(3000);
 		
 
 	}
@@ -81,9 +85,11 @@ public class AddProductToCart extends BaseDriver {
 			SearchResultPage searchResultPage=new SearchResultPage(driver);
 			TestUtilities testUtilities=new TestUtilities();
 			List<AndroidElement> productList=searchResultPage.getProductList();
-			AndroidElement productToBeClicked=testUtilities.getRandomElement(productList);//Getting a random product
+		        //Getting a random product from the search list
+			AndroidElement productToBeClicked=testUtilities.getRandomElement(productList);
+		        //Grabbing product price and name
 			productName=searchResultPage.fetchProductName(productToBeClicked);
-			productPrice=searchResultPage.fetchProductPrice(productToBeClicked);//Grabbing product price and name
+			productPrice=searchResultPage.fetchProductPrice(productToBeClicked);
 			Reporter.log("product name is "+ productName);
 			Reporter.log("product price is "+ productPrice);
 			productToBeClicked.click();
@@ -110,6 +116,8 @@ public class AddProductToCart extends BaseDriver {
 		
 		
 		AndroidElement addToCartBtn;
+		
+		        //Scrolling down to Add to Cart button
 		try {
 			testUtils.scrollToText(driver,"Add to Cart");//Scrolls down to add to cart button
 			wait.until(ExpectedConditions.visibilityOf(productPage.getAddToCartBtn()));
@@ -124,6 +132,8 @@ public class AddProductToCart extends BaseDriver {
 			addToCartBtn = productPage.getAddToCartBtn(); 
 	    
 	                Reporter.log("This test may fail because Add to cart button not getting clicked");
+		       
+		        //Performing Single Tap on Add to Cart button
 			TouchActions action = new TouchActions(driver);
 			action.singleTap(addToCartBtn);
 			action.perform();                   //ADD TO CART BUTTON NOT GETTING CLICKED WITH CORRECT LOCATOR,TRYING SINGLE TAP INSTEAD
@@ -142,7 +152,8 @@ public class AddProductToCart extends BaseDriver {
 	public void validateProductDetailsTest() {
 		
 		CartPage cartPage=new CartPage(driver);
-		
+		       
+		        //Clicking on Cart icon to switch to Cart list
 		try {
 			cartPage.getCartBtn().click();
 		} catch (Exception e) {
@@ -150,6 +161,7 @@ public class AddProductToCart extends BaseDriver {
 			Assert.fail();
 			e.printStackTrace();
 		}
+		        //Waiting for the visibilist of cart list
 		try {
 			wait.until(ExpectedConditions.visibilityOf(cartPage.getCartList()));
 		} catch (Exception e) {
@@ -157,14 +169,17 @@ public class AddProductToCart extends BaseDriver {
 			Assert.fail();
 			e.printStackTrace();
 		}
-		Reporter.log("Grabbing details from cart to Assert");
-		String productNameFromKart=cartPage.getProductNameFromCart();
-		String productPriceFromKart=cartPage.getProductPriceFromCart();//Grab name and price of product from Cart
+		        //Grabbing name and price of product from Cart list
+		        Reporter.log("Grabbing details from cart to Assert");
+		        String productNameFromKart=cartPage.getProductNameFromCart();
+		        String productPriceFromKart=cartPage.getProductPriceFromCart();
 		
-		Reporter.log("Price and Name grabbed succesfully");
-		
-		Assert.assertEquals(productNameFromKart, productName);
-		Assert.assertEquals(productPriceFromKart, productPrice);//Check if the details are matching
+		        Reporter.log("Price and Name grabbed succesfully");
+		     
+		       
+		        //Verifying the details
+		        Assert.assertEquals(productNameFromKart, productName);
+		        Assert.assertEquals(productPriceFromKart, productPrice);//Check if the details are matching
 		
 	
 		
