@@ -57,7 +57,7 @@ public class SignOut extends BaseDriver {
 				signOutPage.getConfirmBtn().click();
 			}else { 
 				//Only reaches this block if already Signed out
-				Reporter.log("Already Signed Out");
+				System.out.println("Already Signed Out");
 			}
 			
 		}catch(Exception e) {
