@@ -46,7 +46,7 @@ public class SignIn extends BaseDriver {
 	
 	
 	
-	//Initializing the driver to perform the tests and stats the server
+	//Initializing the driver to perform the tests and starts the server
 	@BeforeClass
 	public void driverInitializer() throws IOException {
 		startServer();
