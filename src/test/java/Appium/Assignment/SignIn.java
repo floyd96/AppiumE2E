@@ -6,7 +6,6 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -15,6 +14,8 @@ import org.testng.annotations.Test;
 import Resources.ReadExcel;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SignIn extends BaseDriver {
 	
@@ -22,6 +23,8 @@ public class SignIn extends BaseDriver {
 	
 	private static AndroidDriver<AndroidElement> driver;
 	private static WebDriverWait wait;
+	
+	public static Logger log =LogManager.getLogger(SignIn.class.getName());
 	
 	
 	
@@ -49,6 +52,8 @@ public class SignIn extends BaseDriver {
 	//Initializing the driver to perform the tests and starts the server
 	@BeforeClass
 	public void driverInitializer() throws IOException {
+		
+		log.info("Inside driver initializer");
 		startServer();
 		driver=capabilityDriver();
 		wait = new WebDriverWait(driver,20);
@@ -79,7 +84,7 @@ public class SignIn extends BaseDriver {
 				driver.hideKeyboard();
 			        //Clicking on Log in button
 				signInPage.getLogInBtn().click();//Log in
-				Reporter.log("sign-in successfully");
+				log.info("sign-in successfully");
 			
 			  }
 		  
