@@ -34,15 +34,15 @@ mvn clean install
 
 ## Scenarios covered
 
-1.signInTest- Logging in to the app with a set of credentials.
+1. signInTest- Logging in to the app with a set of credentials.
 
-2.searchProductTest- Searching for "65 inch TV" from the homepage.
+2. searchProductTest- Searching for "65 inch TV" from the homepage.
 
-3.selectRandomProductTest- Selecting a random product from the search result and grab the details of the product
+3. selectRandomProductTest- Selecting a random product from the search result and grab the details of the product
 
-4.addProductToCartTest- Adding the randomly selected product to cart and move to cart view.
+4. addProductToCartTest- Adding the randomly selected product to cart and move to cart view.
 
-5.validateProductDetailsTest- Validate the details of the selected product from cart.
+5. validateProductDetailsTest- Validate the details of the selected product from cart.
 
-6.signOutTest- Signing Out from the app.
+6. signOutTest- Signing Out from the app.
 
