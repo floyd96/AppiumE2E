@@ -11,12 +11,11 @@ This project has been developed to automate Amazon application testing on Androi
 
 3. Connect your android device and verify connectivity using "adb devices" command in command prompt
 
-5. Run the below command on Command Prompt.
+4. Run the below command on Command Prompt.
 
 ```sh
 mvn clean install
 ```
-6. On completion of execution, test report will be generated in [Amazon.html file]
 
 
 
