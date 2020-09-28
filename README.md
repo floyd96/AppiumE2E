@@ -16,18 +16,18 @@ This project has been developed to automate Amazon application testing on Androi
 ```sh
 mvn clean install
 ```
-6. On completion of execution, test report will be generated in [Amazon.html file](https://github.com/floyd96/AmazonAssignment/tree/master/Reports/htmlreport.html)
+6. On completion of execution, test report will be generated in [Amazon.html file]
 
 
 
 
 ## App Design
 
-1. Testcases can be [found here](https://github.com/floyd96/AmazonAssignment/tree/master/src/test/java/Appium/Assignment)
+1. Testcases can be [found here](https://github.com/floyd96/AppiumE2E/tree/master/src/test/java/Appium/Assignment)
 
-2. Code for application framework can be [found here](https://github.com/floyd96/AmazonAssignment/tree/master/src/main/java)
+2. Code for application framework can be [found here](https://github.com/floyd96/AppiumE2E/tree/master/src/main/java)
 
-3. Test data is read from [external source file](https://github.com/floyd96/AmazonAssignment/tree/master/src/main/java/AmazonTestData.xlsx)
+3. Test data is read from [external source file](https://github.com/floyd96/AppiumE2E/blob/master/src/main/java/AmazonTestData.xlsx)
 
 5. Extent Reports is used for reporting functionality.
 
