@@ -41,7 +41,7 @@ public class SignOut extends BaseDriver {
 		
 		
 		
-		       log.info("Inside Sign Out method);
+		       log.info("Inside Sign Out method");
 		       SignOutPage signOutPage=new SignOutPage(driver);
 		       TestUtilities testUtilities=new TestUtilities();
 		
