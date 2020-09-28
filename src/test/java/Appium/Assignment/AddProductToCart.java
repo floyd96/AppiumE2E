@@ -8,7 +8,6 @@ import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,6 +18,8 @@ import pageObjects.CartPage;
 import pageObjects.HomePage;
 import pageObjects.ProductPage;
 import pageObjects.SearchResultPage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AddProductToCart extends BaseDriver {
 	
@@ -29,6 +30,8 @@ public class AddProductToCart extends BaseDriver {
 	
 	private static AndroidDriver<AndroidElement> driver;
 	private static WebDriverWait wait;
+	
+	public static Logger log =LogManager.getLogger(AddProductToCart.class.getName());
 	
 	
 	
@@ -84,10 +87,10 @@ public class AddProductToCart extends BaseDriver {
 		        //Grabbing product price and name
 			productName=searchResultPage.fetchProductName(productToBeClicked);
 			productPrice=searchResultPage.fetchProductPrice(productToBeClicked);
-			Reporter.log("product name is "+ productName);
-			Reporter.log("product price is "+ productPrice);
+			log.info("product name is "+ productName);
+			log.info("product price is "+ productPrice);
 			productToBeClicked.click();
-			Reporter.log("Clicked on a random product");
+			log.info("Clicked on a random product");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			Assert.fail();
@@ -125,14 +128,14 @@ public class AddProductToCart extends BaseDriver {
 			
 			addToCartBtn = productPage.getAddToCartBtn(); 
 	    
-	                Reporter.log("This test may fail because Add to cart button not getting clicked");
+	                log.info("This test may fail because Add to cart button not getting clicked");
 		       
 		        //Performing Single Tap on Add to Cart button
 			TouchActions action = new TouchActions(driver);
 			action.singleTap(addToCartBtn);
 			action.perform();                   //ADD TO CART BUTTON NOT GETTING CLICKED WITH CORRECT LOCATOR,TRYING SINGLE TAP INSTEAD
 
-		    Reporter.log("Clicked on Add to Cart Button");
+		       log.info("Clicked on Add to Cart Button");
 		    Thread.sleep(3000);
 		
 		
@@ -158,11 +161,11 @@ public class AddProductToCart extends BaseDriver {
 		        Thread.sleep(2000);
 		
 		        //Grabbing name and price of product from Cart list
-		        Reporter.log("Grabbing details from cart to Assert");
+		        log.info("Grabbing details from cart to Assert");
 		        String productNameFromKart=cartPage.getProductNameFromCart();
 		        String productPriceFromKart=cartPage.getProductPriceFromCart();
 		
-		        Reporter.log("Price and Name grabbed succesfully");
+		        log.info("Price and Name grabbed succesfully");
 		     
 		       
 		        //Verifying the details
