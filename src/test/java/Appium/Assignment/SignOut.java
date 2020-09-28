@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,6 +11,8 @@ import Resources.TestUtilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import pageObjects.SignOutPage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SignOut extends BaseDriver {
 	
@@ -20,6 +21,8 @@ public class SignOut extends BaseDriver {
 
 	private static AndroidDriver<AndroidElement> driver;
 	private static WebDriverWait wait;
+	
+	public static Logger log =LogManager.getLogger(SignOut.class.getName());
 	
 	
 	//Initializes driver and starts server
@@ -38,6 +41,7 @@ public class SignOut extends BaseDriver {
 		
 		
 		
+		       log.info("Inside Sign Out method);
 		       SignOutPage signOutPage=new SignOutPage(driver);
 		       TestUtilities testUtilities=new TestUtilities();
 		
@@ -58,7 +62,7 @@ public class SignOut extends BaseDriver {
 				signOutPage.getConfirmBtn().click();
 			}else { 
 				//Only reaches this block if already Signed out
-				Reporter.log("Already Signed Out");
+				log.info("Already Signed Out");
 			}
 			
 		}catch(Exception e) {
