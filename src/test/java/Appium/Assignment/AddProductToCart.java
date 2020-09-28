@@ -128,7 +128,7 @@ public class AddProductToCart extends BaseDriver {
 			
 			addToCartBtn = productPage.getAddToCartBtn(); 
 	    
-	                log.info("This test may fail because Add to cart button not getting clicked");
+	                log.warn("This test may fail because Add to cart button not getting clicked");
 		       
 		        //Performing Single Tap on Add to Cart button
 			TouchActions action = new TouchActions(driver);
