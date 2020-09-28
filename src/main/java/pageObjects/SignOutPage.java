@@ -3,8 +3,6 @@ package pageObjects;
 
 
 import org.openqa.selenium.support.PageFactory;
-
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -22,30 +20,30 @@ public class SignOutPage {
 		
 	//methods
 	@AndroidFindBy(id="in.amazon.mShop.android.shopping:id/chrome_action_bar_burger_icon")
-	private MobileElement sideBar;
+	private AndroidElement sideBar;
 	
-	public  MobileElement getSideBar() {
+	public  AndroidElement getSideBar() {
 		return sideBar;
 	}
 	
 	
 	@AndroidFindBy(xpath="//android.widget.TextView[@text='Settings']")
-	private MobileElement settings;
-	public  MobileElement getSettings() {
+	private AndroidElement settings;
+	public AndroidElement  getSettings() {
 		return settings;
 	}
 	
 	
 	@AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Sign out\")")
-	private MobileElement signOutBtn;
-	public  MobileElement getSignOutBtn() {
+	private AndroidElement signOutBtn;
+	public  AndroidElement getSignOutBtn() {
 		return signOutBtn;
 	}
 	
 	
 	@AndroidFindBy(id="android:id/button2")
-	private MobileElement confirmBtn;
-	public  MobileElement getConfirmBtn() {
+	private AndroidElement confirmBtn;
+	public  AndroidElement getConfirmBtn() {
 		return confirmBtn;
 	}
 }
