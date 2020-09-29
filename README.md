@@ -30,6 +30,8 @@ mvn clean install
 
 5. Extent Reports is used for reporting functionality.
 
+6. Log4j has been used for logging functionality.
+
 
 ## Scenarios covered
 
