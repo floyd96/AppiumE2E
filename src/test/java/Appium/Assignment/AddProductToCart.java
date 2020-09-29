@@ -27,10 +27,11 @@ public class AddProductToCart extends BaseDriver {
 	private static String productName;
 	private static String productPrice;
 	
-	
+	//Declaring driver object along with wait
 	private static AndroidDriver<AndroidElement> driver;
 	private static WebDriverWait wait;
 	
+	//Initializing logger
 	public static Logger log =LogManager.getLogger(AddProductToCart.class.getName());
 	
 	
@@ -75,6 +76,7 @@ public class AddProductToCart extends BaseDriver {
 	}
 	
 	// Selects a random product from the list of search result
+	//No need to give priority or dependsOnMethods helper attributes as alphabetically sorted in right order
 	@Test
 	public  void selectRandomProductTest() throws InterruptedException{
 		
@@ -105,6 +107,7 @@ public class AddProductToCart extends BaseDriver {
 }   
 	
 	//Adds the selected product to cart
+	//Not alphabetically sorted in correct order hence using dependsOnMethods helper attribute
 	@Test(dependsOnMethods = {"selectRandomProductTest"})
 	public void addProductToCartTest() throws InterruptedException {
 		
@@ -145,6 +148,7 @@ public class AddProductToCart extends BaseDriver {
 	
 	
 	//Validating the details as fetched from Cart
+	//Using dependsOnMethods helper attribute to maintain order
 	@Test(dependsOnMethods = {"addProductToCartTest"})
 	public void validateProductDetailsTest() throws InterruptedException {
 		
@@ -163,14 +167,16 @@ public class AddProductToCart extends BaseDriver {
 		        //Grabbing name and price of product from Cart list
 		        log.info("Grabbing details from cart to Assert");
 		        String productNameFromKart=cartPage.getProductNameFromCart();
+		        log.info("Name of the product is"+productNameFromKart);
 		        String productPriceFromKart=cartPage.getProductPriceFromCart();
+		        log.info("Price of the product is"+productPriceFromKart);
 		
 		        log.info("Price and Name grabbed succesfully");
 		     
 		       
 		        //Verifying the details
 		        Assert.assertEquals(productNameFromKart, productName);
-		        Assert.assertEquals(productPriceFromKart, productPrice);//Check if the details are matching
+		        Assert.assertEquals(productPriceFromKart, productPrice);//Checking if the details are matching
 		
 	
 		
