@@ -56,6 +56,8 @@ public class AddProductToCart extends BaseDriver {
 	@Test
 	public  void searchProductTest() throws IOException, InterruptedException{
 		
+		log.info("Inside searchProductTest");
+		
 		//Fetching product name from properties file
 		String productName=TestUtilities.getProperty("productName");
 		HomePage homePage=new HomePage(driver);
@@ -79,6 +81,8 @@ public class AddProductToCart extends BaseDriver {
 	//No need to give priority or dependsOnMethods helper attributes as alphabetically sorted in right order
 	@Test
 	public  void selectRandomProductTest() throws InterruptedException{
+		
+		    log.info("Inside selectRandomProductTest");
 		
 	    try {
 			SearchResultPage searchResultPage=new SearchResultPage(driver);
@@ -110,6 +114,8 @@ public class AddProductToCart extends BaseDriver {
 	//Not alphabetically sorted in correct order hence using dependsOnMethods helper attribute
 	@Test(dependsOnMethods = {"selectRandomProductTest"})
 	public void addProductToCartTest() throws InterruptedException {
+		
+		log.info("Inside addProductToCartTest");
 		
 		ProductPage productPage=new ProductPage(driver);
 		TestUtilities testUtils=new TestUtilities();
@@ -151,6 +157,9 @@ public class AddProductToCart extends BaseDriver {
 	//Using dependsOnMethods helper attribute to maintain order
 	@Test(dependsOnMethods = {"addProductToCartTest"})
 	public void validateProductDetailsTest() throws InterruptedException {
+		
+		
+		log.info("Inside validateProductDetailsTest");
 		
 		CartPage cartPage=new CartPage(driver);
 		       
