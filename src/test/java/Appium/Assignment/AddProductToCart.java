@@ -176,9 +176,9 @@ public class AddProductToCart extends BaseDriver {
 		        //Grabbing name and price of product from Cart list
 		        log.info("Grabbing details from cart to Assert");
 		        String productNameFromKart=cartPage.getProductNameFromCart();
-		        log.info("Name of the product is"+productNameFromKart);
+		        log.info("Name of the product is "+productNameFromKart);
 		        String productPriceFromKart=cartPage.getProductPriceFromCart();
-		        log.info("Price of the product is"+productPriceFromKart);
+		        log.info("Price of the product is "+productPriceFromKart);
 		
 		        log.info("Price and Name grabbed succesfully");
 		     
