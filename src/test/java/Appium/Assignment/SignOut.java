@@ -18,10 +18,11 @@ public class SignOut extends BaseDriver {
 	
 	//SIGN OUT MODULE
 	
-
+	//Declaring driver object along with wait
 	private static AndroidDriver<AndroidElement> driver;
 	private static WebDriverWait wait;
 	
+	//Initializing logger
 	public static Logger log =LogManager.getLogger(SignOut.class.getName());
 	
 	
