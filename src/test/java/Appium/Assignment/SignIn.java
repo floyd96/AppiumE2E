@@ -21,16 +21,18 @@ public class SignIn extends BaseDriver {
 	
 	//SIGN IN MODULE
 	
+	//Declaring driver object along with wait
 	private static AndroidDriver<AndroidElement> driver;
 	private static WebDriverWait wait;
 	
+	//Initializing logger
 	public static Logger log =LogManager.getLogger(SignIn.class.getName());
 	
 	
 	
 	
 	
-	
+	//Defining DataProvider Method
 	@DataProvider
 	public String[][] getExcelData() throws InvalidFormatException, IOException{
 		ReadExcel read = new ReadExcel();
